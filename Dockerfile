@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 	apt-get update && \
 	apt-get install -y --force-yes git make gcc g++ autoconf && apt-get clean && \
 
-	apt-get install redis-server \
+	apt-get install -y --force-yes redis-server \
 
 #    cd /tmp && \
 #    wget http://download.redis.io/redis-stable.tar.gz && \
@@ -24,6 +24,8 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     sed -i 's/^\(daemonize .*\)$/daemonize yes/' /etc/redis/redis.conf && \
     sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf && \
     sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf \
+
+    mkdir -p /usr/src/app \
 
 	echo "# ! /bin/sh " > /usr/src/app/run.sh && \
 	echo "cd Run" >> /usr/src/app/run.sh && \
