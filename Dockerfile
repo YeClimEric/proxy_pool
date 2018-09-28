@@ -4,9 +4,10 @@ COPY . .
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Asia/Shanghai
 RUN pip install --no-cache-dir -r requirements.txt && \
-	apt-get update && apt-get install -y --no-install-recommends apt-utils \
-	apt-get install -y --allow  redis-server && \
-	apt-get install -y --allow git make gcc g++ autoconf && apt-get clean && \
+
+	apt-get update && apt-get install -y --no-install-recommends apt-utils && \
+	apt-get install -y  redis-server && \
+	apt-get install -y git make gcc g++ autoconf && apt-get clean && \
 
 #    cd /tmp && \
 #    wget http://download.redis.io/redis-stable.tar.gz && \
@@ -30,8 +31,6 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 	echo "/usr/bin/redis-server /etc/redis/redis.conf &" >> /usr/src/app/run.sh && \
 	echo "python main.py" >> /usr/src/app/run.sh && \
 	chmod 777 run.sh
-
-
 
 
 EXPOSE 5010
