@@ -4,10 +4,9 @@ COPY . .
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Asia/Shanghai
 RUN pip install --no-cache-dir -r requirements.txt && \
-
 	apt-get update && apt-get install -y --no-install-recommends apt-utils && \
-	apt-get install -y  redis-server && \
-	apt-get install -y git make gcc g++ autoconf && apt-get clean && \
+	apt-get install -y redis-server && \
+#	apt-get install -y make gcc g++ autoconf && apt-get clean && \
 
 #    cd /tmp && \
 #    wget http://download.redis.io/redis-stable.tar.gz && \
