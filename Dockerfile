@@ -28,6 +28,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 	echo "python main.py" >> /usr/src/app/run.sh && \
 	chmod 777 run.sh
 
+
 	rm -rf /tmp/redis-stable* && \
 
 EXPOSE 5010
