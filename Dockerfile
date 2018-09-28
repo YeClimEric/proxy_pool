@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf && \
     sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf && \
     sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf && \
-    sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf
+    sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf \
 
 	echo "# ! /bin/sh " > /usr/src/app/run.sh && \
 	echo "cd Run" >> /usr/src/app/run.sh && \
