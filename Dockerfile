@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 	echo "cd Run" >> /usr/src/app/run.sh && \
 	echo "/usr/bin/redis-server /etc/redis/redis.conf &" >> /usr/src/app/run.sh && \
 	echo "python main.py" >> /usr/src/app/run.sh && \
-	chmod 777 run.sh
+	chmod 777 run.sh \
 
 
 	rm -rf /tmp/redis-stable* && \
