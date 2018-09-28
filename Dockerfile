@@ -4,8 +4,8 @@ COPY . .
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Asia/Shanghai
 RUN pip install --no-cache-dir -r requirements.txt && \
-	apt-get update && \
-	apt-get install -y --allow redis-server && \
+	apt-get update && apt-get install -y --no-install-recommends apt-utils \
+	apt-get install -y --allow  redis-server && \
 	apt-get install -y --allow git make gcc g++ autoconf && apt-get clean && \
 
 #    cd /tmp && \
