@@ -67,7 +67,7 @@ class DbClient(object):
         if "SSDB" == self.config.db_type:
             __type = "SsdbClient"
         elif "REDIS" == self.config.db_type:
-            __type = "RedisClient"
+            __type = "SsdbClient"
         elif "MONGODB" == self.config.db_type:
             __type = "MongodbClient"
         else:
