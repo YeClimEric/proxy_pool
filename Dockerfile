@@ -14,11 +14,12 @@ RUN sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf \
     && sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf \
 
 
-RUN pip install --no-cache-dir -r requirements.txt \
-RUN echo "# ! /bin/sh " > /usr/src/app/run.sh \
-	&& echo "cd Run" >> /usr/src/app/run.sh \
-	&& echo "/usr/bin/redis-server /etc/redis/redis.conf &" >> /usr/src/app/run.sh \
-	&& echo "python main.py" >> /usr/src/app/run.sh  \
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN echo "# ! /bin/sh " > run.sh \
+	&& echo "cd Run" >> run.sh \
+	&& echo "/usr/bin/redis-server /etc/redis/redis.conf &" >> run.sh \
+	&& echo "python main.py" >> run.sh  \
 	&& chmod 777 run.sh
 
 EXPOSE 5010
