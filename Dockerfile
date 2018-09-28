@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     cp -f src/redis-sentinel /usr/local/bin && \
     mkdir -p /etc/redis && \
     cp -f *.conf /etc/redis && \
-    rm -rf /tmp/redis-stable* && \
+
     sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf && \
     sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf && \
     sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf && \
@@ -27,5 +27,8 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 	echo "/usr/bin/redis-server /etc/redis/redis.conf &" >> /usr/src/app/run.sh && \
 	echo "python main.py" >> /usr/src/app/run.sh && \
 	chmod 777 run.sh
+
+	rm -rf /tmp/redis-stable* && \
+
 EXPOSE 5010
 CMD [ "sh", "run.sh" ]
