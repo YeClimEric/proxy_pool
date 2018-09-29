@@ -74,11 +74,6 @@ def refreshPool():
 
 
 def main(process_num=30):
-    p = ProxyRefreshSchedule()
-
-    # 获取新代理
-    p.refresh()
-
     # 检验新代理
     pl = []
     for num in range(process_num):
@@ -92,11 +87,17 @@ def main(process_num=30):
     for num in range(process_num):
         pl[num].join()
 
+    # 把fetcher放到后面，先启动refresh，避免长时间无法获取到proxy情况
+    p = ProxyRefreshSchedule()
+
+    # 获取新代理
+    p.refresh()
+
 
 def run():
     main()
     sch = BlockingScheduler()
-    sch.add_job(main, 'interval', minutes=10)  # 每10分钟抓取一次
+    sch.add_job(main, 'interval', minutes=5)  # 每5分钟抓取一次
     sch.start()
 
 

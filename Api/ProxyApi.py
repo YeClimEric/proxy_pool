@@ -26,7 +26,6 @@ app = Flask(__name__)
 
 
 class JsonResponse(Response):
-
     @classmethod
     def force_type(cls, response, environ=None):
         if isinstance(response, (dict, list)):
@@ -86,7 +85,7 @@ def getStatus():
 
 def run():
     config = GetConfig()
-    app.run(host=config.host_ip, port=config.host_port)
+    app.run(host=config.host_ip, port=config.host_port, processes=config.processes)
 
 
 if __name__ == '__main__':
