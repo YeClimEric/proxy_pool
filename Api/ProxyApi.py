@@ -87,6 +87,5 @@ def run():
     config = GetConfig()
     app.run(host=config.host_ip, port=config.host_port, processes=config.processes)
 
-
 if __name__ == '__main__':
     run()
