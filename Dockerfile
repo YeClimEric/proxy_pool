@@ -26,5 +26,4 @@ RUN echo "# ! /bin/sh " > run.sh \
 	&& chmod 777 run.sh
 
 EXPOSE 5010
-EXPOSE 6379
 CMD [ "sh", "run.sh" ]
