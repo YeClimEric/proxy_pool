@@ -52,7 +52,7 @@ class GetFreeProxy(object):
         pass
 
     @staticmethod
-    def freeProxyFirst(page=10):
+    def free_proxy_5u(page=10):
         """
         无忧代理 http://www.data5u.com/
         几乎没有能用的
@@ -74,7 +74,7 @@ class GetFreeProxy(object):
                     print(e)
 
     @staticmethod
-    def freeProxySecond(area=33, page=1):
+    def free_proxy_66ip(area=33, page=1):
         """
         代理66 http://www.66ip.cn/
         :param area: 抓取代理页数，page=1北京代理页，page=2上海代理页......
@@ -94,7 +94,7 @@ class GetFreeProxy(object):
                 break
 
     @staticmethod
-    def freeProxyThird(days=1):
+    def free_proxy_ip181(days=1):
         """
         ip181 http://www.ip181.com/  不能用了
         :param days:
@@ -110,7 +110,7 @@ class GetFreeProxy(object):
             pass
 
     @staticmethod
-    def freeProxyFourth(page_count=2):
+    def free_proxy_xici(page_count=2):
         """
         西刺代理 http://www.xicidaili.com
         :return:
@@ -131,7 +131,7 @@ class GetFreeProxy(object):
                         pass
 
     @staticmethod
-    def freeProxyFifth():
+    def free_proxy_goubanjia():
         """
         guobanjia http://www.goubanjia.com/
         :return:
@@ -156,7 +156,7 @@ class GetFreeProxy(object):
                 pass
 
     @staticmethod
-    def freeProxySixth():
+    def free_proxy_xdaili():
         """
         讯代理 http://www.xdaili.cn/
         :return:
@@ -171,7 +171,7 @@ class GetFreeProxy(object):
             pass
 
     @staticmethod
-    def freeProxySeventh():
+    def free_proxy_kuaidaili():
         """
         快代理 https://www.kuaidaili.com
         """
@@ -188,7 +188,7 @@ class GetFreeProxy(object):
                     yield ':'.join(tr.xpath('./td/text()')[0:2])
 
     @staticmethod
-    def freeProxyEight():
+    def free_proxy_mimi():
         """
         秘密代理 http://www.mimiip.com
         """
@@ -205,7 +205,7 @@ class GetFreeProxy(object):
                 yield ':'.join(proxy)
 
     @staticmethod
-    def freeProxyNinth():
+    def free_proxy_coder():
         """
         码农代理 https://proxy.coderbusy.com/
         :return:
@@ -219,7 +219,7 @@ class GetFreeProxy(object):
                 yield ':'.join(proxy)
 
     @staticmethod
-    def freeProxyTen():
+    def free_proxy_ip3366():
         """
         云代理 http://www.ip3366.net/free/
         :return:
@@ -233,7 +233,7 @@ class GetFreeProxy(object):
                 yield ":".join(proxy)
 
     @staticmethod
-    def freeProxyEleven():
+    def free_proxy_iphai():
         """
         IP海 http://www.iphai.com/free/ng
         :return:
@@ -253,11 +253,11 @@ class GetFreeProxy(object):
                 yield ":".join(proxy)
 
     @staticmethod
-    def freeProxyTwelve(page_count=8):
+    def free_proxy_jiangxianli(page_count=5):
         """
         guobanjia http://ip.jiangxianli.com/?page=
         免费代理库
-        超多量
+        超多量,http为主
         :return:
         """
         for i in range(1, page_count + 1):
@@ -270,7 +270,7 @@ class GetFreeProxy(object):
                 yield tr.xpath("./td[2]/text()")[0] + ":" + tr.xpath("./td[3]/text()")[0]
 
     @staticmethod
-    def freeProxyWallFirst():
+    def free_proxy_wall_cn_proxy():
         """
         墙外网站 cn-proxy
         :return:
@@ -284,7 +284,7 @@ class GetFreeProxy(object):
                 yield ':'.join(proxy)
 
     @staticmethod
-    def freeProxyWallSecond():
+    def free_proxy_wall_proxy_list():
         """
         https://proxy-list.org/english/index.php
         :return:
@@ -299,7 +299,7 @@ class GetFreeProxy(object):
                 yield base64.b64decode(proxy).decode()
 
     @staticmethod
-    def freeProxyWallThird():
+    def free_proxy_wall_proxy_list_plus():
         urls = ['https://list.proxylistplus.com/Fresh-HTTP-Proxy-List-1']
         request = WebRequest()
         for url in urls:
@@ -312,7 +312,7 @@ class GetFreeProxy(object):
 if __name__ == '__main__':
     from CheckProxy import CheckProxy
 
-    CheckProxy.checkGetProxyFunc(GetFreeProxy.freeProxyFifth)
-    CheckProxy.checkGetProxyFunc(GetFreeProxy.freeProxySecond)
+    CheckProxy.checkGetProxyFunc(GetFreeProxy.free_proxy_goubanjia)
+    CheckProxy.checkGetProxyFunc(GetFreeProxy.free_proxy_66ip)
 
     CheckProxy.checkAllGetProxyFunc()

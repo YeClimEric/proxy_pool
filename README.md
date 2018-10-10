@@ -50,8 +50,8 @@ port = 8888       # db port
 name = proxy      # 默认配置
 
 # 配置 ProxyGetter
-freeProxyFirst  = 1  # 这里是启动的抓取函数，可在ProxyGetter/getFreeProxy.py 扩展
-freeProxySecond = 1
+free_proxy_5u  = 1  # 这里是启动的抓取函数，可在ProxyGetter/getFreeProxy.py 扩展
+free_proxy_66ip = 1
 ....
 
 # 配置 HOST (api服务)
@@ -155,7 +155,7 @@ class GetFreeProxy(object):
 
 [ProxyGetter]
 ;register the proxy getter function
-freeProxyFirst  = 0  # 如果要取消某个方法，将其删除或赋为0即可
+free_proxy_5u  = 0  # 如果要取消某个方法，将其删除或赋为0即可
 ....
 freeProxyCustom  = 1  # 确保名字和你添加方法名字一致
 

@@ -40,9 +40,10 @@ class ProxyManager(object):
         fetch proxy into Db by ProxyGetter
         :return:
         """
+        self.db.changeTable(self.raw_proxy_queue)
         for proxyGetter in self.config.proxy_getter_functions:
             # fetch
-            proxy_set = set()
+            # proxy_set = set()
             try:
                 self.log.info("{func}: fetch proxy start".format(func=proxyGetter))
                 proxy_iter = [_ for _ in getattr(GetFreeProxy, proxyGetter.strip())()]
@@ -53,17 +54,18 @@ class ProxyManager(object):
                 proxy = proxy.strip()
                 if proxy and verifyProxyFormat(proxy):
                     self.log.info('{func}: fetch proxy {proxy}'.format(func=proxyGetter, proxy=proxy))
-                    proxy_set.add(proxy)
+                    # proxy_set.add(proxy)
+                    self.db.put(proxy)
                 else:
                     self.log.error('{func}: fetch proxy {proxy} error'.format(func=proxyGetter, proxy=proxy))
 
-            # store
-            for proxy in proxy_set:
-                self.db.changeTable(self.useful_proxy_queue)
-                if self.db.exists(proxy):
-                    continue
-                self.db.changeTable(self.raw_proxy_queue)
-                self.db.put(proxy)
+                    # store
+                    # for proxy in proxy_set:
+                    #     self.db.changeTable(self.useful_proxy_queue)
+                    #     if self.db.exists(proxy):
+                    #         continue
+                    #     self.db.changeTable(self.raw_proxy_queue)
+                    #     self.db.put(proxy)
 
     def get(self):
         """
