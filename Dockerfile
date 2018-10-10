@@ -1,4 +1,5 @@
 FROM python:3.6
+MAINTAINER yeclimeric@gmail.com
 WORKDIR /usr/src/app
 COPY . .
 ENV DEBIAN_FRONTEND noninteractive
