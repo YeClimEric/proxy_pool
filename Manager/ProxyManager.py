@@ -46,26 +46,17 @@ class ProxyManager(object):
             # proxy_set = set()
             try:
                 self.log.info("{func}: fetch proxy start".format(func=proxyGetter))
-                proxy_iter = [_ for _ in getattr(GetFreeProxy, proxyGetter.strip())()]
+                # proxy_iter = [_ for _ in getattr(GetFreeProxy, proxyGetter.strip())()]
+                for proxy in getattr(GetFreeProxy, proxyGetter.strip())():
+                    proxy = proxy.strip()
+                    if proxy and verifyProxyFormat(proxy):
+                        self.log.info('{func}: fetch proxy {proxy}'.format(func=proxyGetter, proxy=proxy))
+                        self.db.put(proxy)
+                    else:
+                        self.log.error('{func}: fetch proxy {proxy} error'.format(func=proxyGetter, proxy=proxy))
             except Exception as e:
                 self.log.error("{func}: fetch proxy fail".format(func=proxyGetter))
                 continue
-            for proxy in proxy_iter:
-                proxy = proxy.strip()
-                if proxy and verifyProxyFormat(proxy):
-                    self.log.info('{func}: fetch proxy {proxy}'.format(func=proxyGetter, proxy=proxy))
-                    # proxy_set.add(proxy)
-                    self.db.put(proxy)
-                else:
-                    self.log.error('{func}: fetch proxy {proxy} error'.format(func=proxyGetter, proxy=proxy))
-
-                    # store
-                    # for proxy in proxy_set:
-                    #     self.db.changeTable(self.useful_proxy_queue)
-                    #     if self.db.exists(proxy):
-                    #         continue
-                    #     self.db.changeTable(self.raw_proxy_queue)
-                    #     self.db.put(proxy)
 
     def get(self):
         """

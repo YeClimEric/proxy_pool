@@ -18,7 +18,7 @@ import sys
 import time
 import logging
 from threading import Thread
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 
 sys.path.append('../')
 
@@ -73,7 +73,7 @@ def refreshPool():
     pp.validProxy()
 
 
-def main(process_num=30):
+def batch_refresh(process_num=30):
     # 检验新代理
     pl = []
     for num in range(process_num):
@@ -87,18 +87,19 @@ def main(process_num=30):
     for num in range(process_num):
         pl[num].join()
 
-    # 把fetcher放到后面，先启动refresh，避免长时间无法获取到proxy情况
-    p = ProxyRefreshSchedule()
 
+def fetch_all():
+    p = ProxyRefreshSchedule()
     # 获取新代理
     p.refresh()
 
 
 def run():
-    main()
-    sch = BlockingScheduler()
-    sch.add_job(main, 'interval', minutes=5)  # 每5分钟抓取一次
+    sch = BackgroundScheduler()
+    sch.add_job(fetch_all, 'interval', minutes=5)  # 每5分钟抓取一次
+    sch.add_job(batch_refresh, "interval", minutes=1)  # 每分钟检测一次 proxy
     sch.start()
+    fetch_all()
 
 
 if __name__ == '__main__':
