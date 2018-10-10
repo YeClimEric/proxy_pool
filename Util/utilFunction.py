@@ -18,6 +18,11 @@ from lxml import etree
 from Util.LogHandler import LogHandler
 from Util.WebRequest import WebRequest
 
+# cancel https ssl verify
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 
 # logger = LogHandler(__name__, stream=False)
 
@@ -109,3 +114,13 @@ def validUsefulProxy(proxy, test_url="https://www.baidu.com/"):
     except Exception as e:
         # logger.error(str(e))
         return False
+
+
+if __name__ == "__main__":
+    while True:
+        proxy = requests.get("http://localhost:5010/get/").text
+        if not validUsefulProxy(proxy):
+            print('delete proxy:', proxy)
+            requests.get("http://localhost:5010/delete?proxy=" + proxy, verify=False)
+        else:
+            print('valid proxy:', proxy)
