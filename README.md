@@ -23,6 +23,12 @@
 
 * 测试地址: http://123.207.35.36:5010 (单机勿压。感谢)
 
+### Docker 地址
+
+```
+    docker pull docker.io/yeclimeric/proxy_pool
+```
+
 ### 下载安装
 
 * 下载源码:
