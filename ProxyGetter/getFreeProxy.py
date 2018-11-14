@@ -62,7 +62,9 @@ class GetFreeProxy(object):
         url_list = [
             'http://www.data5u.com/',
             'http://www.data5u.com/free/gngn/index.shtml',
-            'http://www.data5u.com/free/gnpt/index.shtml'
+            'http://www.data5u.com/free/gnpt/index.shtml',
+            'http://www.data5u.com/free/gwgn/index.shtml',
+            'http://www.data5u.com/free/gwpt/index.shtml'
         ]
         for url in url_list:
             html_tree = getHtmlTree(url)
@@ -110,16 +112,28 @@ class GetFreeProxy(object):
             pass
 
     @staticmethod
-    def free_proxy_xici(page_count=2):
+    def free_proxy_xici():
         """
         西刺代理 http://www.xicidaili.com
         :return:
         """
-        url_list = [
-            'http://www.xicidaili.com/nn/',  # 高匿
-            'http://www.xicidaili.com/nt/',  # 透明
+        url_list = [{
+            "url": "http://www.xicidaili.com/nn/",
+            "page_count": 3000
+        }, {
+            "url": "http://www.xicidaili.com/nt/",
+            "page_count": 500
+        }, {
+            "url": "http://www.xicidaili.com/wn/",
+            "page_count": 1500
+        }, {
+            "url": "http://www.xicidaili.com/wt/",
+            "page_count": 1800
+        }
         ]
-        for each_url in url_list:
+        for task in url_list:
+            each_url = task['url']
+            page_count = task['page_count']
             for i in range(1, page_count + 1):
                 page_url = each_url + str(i)
                 tree = getHtmlTree(page_url)
@@ -171,7 +185,7 @@ class GetFreeProxy(object):
             pass
 
     @staticmethod
-    def free_proxy_kuaidaili():
+    def free_proxy_kuaidaili(page_count=2500):
         """
         快代理 https://www.kuaidaili.com
         """
@@ -180,7 +194,7 @@ class GetFreeProxy(object):
             'https://www.kuaidaili.com/free/intr/{page}/'
         ]
         for url in url_list:
-            for page in range(1, 5):
+            for page in range(1, page_count):
                 page_url = url.format(page=page)
                 tree = getHtmlTree(page_url)
                 proxy_list = tree.xpath('.//table//tr')
