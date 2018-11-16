@@ -119,16 +119,16 @@ class GetFreeProxy(object):
         """
         url_list = [{
             "url": "http://www.xicidaili.com/nn/",
-            "page_count": 3000
+            "page_count": 100
         }, {
             "url": "http://www.xicidaili.com/nt/",
-            "page_count": 500
+            "page_count": 100
         }, {
             "url": "http://www.xicidaili.com/wn/",
-            "page_count": 1500
+            "page_count": 100
         }, {
             "url": "http://www.xicidaili.com/wt/",
-            "page_count": 1800
+            "page_count": 100
         }
         ]
         for task in url_list:
@@ -185,7 +185,7 @@ class GetFreeProxy(object):
             pass
 
     @staticmethod
-    def free_proxy_kuaidaili(page_count=2500):
+    def free_proxy_kuaidaili(page_count=50):
         """
         快代理 https://www.kuaidaili.com
         """
