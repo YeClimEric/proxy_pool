@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Asia/Shanghai
 
 RUN apt-get update
+RUN apt-get install apt-utils -y
 RUN apt-get install vim -y
 
 RUN apt-get install -y redis-server
@@ -16,8 +17,6 @@ RUN sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf \
 #    && sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf
 
 RUN pip install --no-cache-dir -r requirements.txt
-
-RUN mkdir log
 
 RUN echo "# ! /bin/sh " > run.sh \
     && echo "redis-server /etc/redis/redis.conf&" >> run.sh \
