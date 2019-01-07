@@ -20,8 +20,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN echo "# ! /bin/sh " > run.sh \
     && echo "redis-server /etc/redis/redis.conf&" >> run.sh \
-	&& echo "cd Run" >> run.sh \
-	&& echo "python main.py" >> run.sh  \
+	&& echo "cd Schedule" >> run.sh \
+	&& echo "python ProxyCheck.py" >> run.sh  \
+	&& echo "python ProxyRefreshSchedule.py" >> run.sh  \
+	&& echo "python ProxyValidSchedule.py" >> run.sh  \
 	&& chmod 777 run.sh
 
 EXPOSE 5010
