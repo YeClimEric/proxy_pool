@@ -55,6 +55,6 @@ class ProxyCheck(ProxyManager, Thread):
 
 
 if __name__ == '__main__':
-    # p = ProxyCheck()
-    # p.run()
+    p = ProxyCheck()
+    p.run()
     pass
