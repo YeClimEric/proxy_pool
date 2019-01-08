@@ -24,6 +24,7 @@ RUN echo "# ! /bin/sh " > run.sh \
 	&& echo "nohup python ProxyCheck.py >> ../log/log.check &" >> run.sh  \
 	&& echo "nohup python ProxyRefreshSchedule.py >> ../log/log.refresh &" >> run.sh  \
 	&& echo "nohup python ProxyValidSchedule.py >> ../log/log.valid &" >> run.sh  \
+	&& echo "tail -f /dev/null" >> run.sh  \
 	&& chmod 777 run.sh
 
 EXPOSE 5010
