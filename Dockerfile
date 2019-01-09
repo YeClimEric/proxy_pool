@@ -8,7 +8,7 @@ ENV TZ Asia/Shanghai
 RUN apt-get update
 RUN apt-get install apt-utils -y
 # RUN apt-get install vim -y
-RUN apt-get install -y nodejs npm
+RUN apt-get install -y nodejs
 RUN apt-get install -y redis-server
 
 RUN sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf \
