@@ -27,7 +27,7 @@ RUN echo "# ! /bin/sh " > run.sh \
 	&& echo "nohup python ProxyRefreshSchedule.py &" >> run.sh  \
 	&& echo "nohup python ProxyValidSchedule.py &" >> run.sh  \
 	&& echo "cd ../Api" >> run.sh \
-	&& echo "nohup python ProxyApi.py &" >> run.sh  \
+	&& echo "nohup node server.js &" >> run.sh  \
 	&& echo "tail -f /dev/null" >> run.sh  \
 	&& chmod 777 run.sh
 
